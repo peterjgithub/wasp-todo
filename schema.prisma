@@ -22,3 +22,13 @@ model Task {
   userId      Int?
 }
 
+model Country {
+  id           String  @id @default(uuid())
+  name         String
+  officialname String
+  tld          String
+  cca2         String
+  cca3         String
+  capital      String
+  independent  Boolean @default(true)
+}

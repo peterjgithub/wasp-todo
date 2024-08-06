@@ -57,3 +57,11 @@ action updateTask {
   fn: import { updateTask } from "@src/actions",
   entities: [Task]
 }
+
+query getCountries {
+  fn: import { getCountries } from "@src/queries.js"
+}
+
+query getFilteredCountries {
+  fn: import { getFilteredCountries } from "@src/queries.js"
+}
