@@ -22,13 +22,10 @@ model Task {
   userId      Int?
 }
 
-model Country {
-  id           String  @id @default(uuid())
+model Plan {
+  id           Int    @id @default(autoincrement())
   name         String
-  officialname String
-  tld          String
-  cca2         String
-  cca3         String
-  capital      String
-  independent  Boolean @default(true)
+  price        Int    @default(0)
+  billingCycle String @default("monthly")
+  description  String
 }

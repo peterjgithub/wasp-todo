@@ -14,13 +14,24 @@ export const MainPage = ({ user }: { user: AuthUser }) => {
 
   return (
     <div>
-      <NewTaskForm />
-
+      <h1>Tasks</h1>
       {tasks && <TasksList tasks={tasks} />}
-
       {isLoading && 'Loading...'}
       {error && 'Error: ' + error}
+      <NewTaskForm />
       <button onClick={logout}>Logout</button>
+    </div>
+  )
+}
+
+const TasksList = ({ tasks }: { tasks: Task[] }) => {
+  if (!tasks?.length) return <div>No tasks</div>
+
+  return (
+    <div>
+      {tasks.map((task, idx) => (
+        <TaskView task={task} key={idx} />
+      ))}
     </div>
   )
 }
@@ -50,17 +61,7 @@ const TaskView = ({ task }: { task: Task }) => {
   )
 }
 
-const TasksList = ({ tasks }: { tasks: Task[] }) => {
-  if (!tasks?.length) return <div>No tasks</div>
 
-  return (
-    <div>
-      {tasks.map((task, idx) => (
-        <TaskView task={task} key={idx} />
-      ))}
-    </div>
-  )
-}
 
 const NewTaskForm = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
